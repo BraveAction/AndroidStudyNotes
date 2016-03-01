@@ -1,5 +1,6 @@
 package com.example.win7.myapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,8 +20,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        设置标题
+        toolbar.setTitle(getTitle());
+//        设置子标题
+        toolbar.setSubtitle(getTitle());
+//        设置导航按键
+//        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.navg));
+//        设置标题文本颜色
+        toolbar.setTitleTextColor(Color.argb(255, 20, 20, 255));
+//        设置子标题文本颜色
+        toolbar.setSubtitleTextColor(Color.argb(255, 20, 20, 255));
+//        设置ActionBar
         setSupportActionBar(toolbar);
-
+//        ActionBar不要显示标题
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        设置返回按键图片
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.navg);
+//        显示返回按键
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
