@@ -6,10 +6,17 @@
         android:id="@+id/edit"
         android:icon="@drawable/voice"
         android:orderInCategory="110"
-        app:showAsAction="ifRoom"/>
+        android:title="长按显示"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/edit1"
+        android:icon="@drawable/voice"
+        android:orderInCategory="110"
+        android:title="长按显示"
+        app:showAsAction="always|withText"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="withText"/>
 </menu>
