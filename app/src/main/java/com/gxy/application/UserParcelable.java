@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,23 +8,6 @@ import android.os.Parcelable;
  * Created by Gxy on 2016/03/03.
  */
 public class UserParcelable implements Parcelable {
-    String test;
-
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
-    }
-
-    public UserParcelable() {
-    }
-
-    protected UserParcelable(Parcel in) {
-        test = in.readString();
-    }
-
     public static final Creator<UserParcelable> CREATOR = new Creator<UserParcelable>() {
         @Override
         public UserParcelable createFromParcel(Parcel in) {
@@ -36,6 +19,22 @@ public class UserParcelable implements Parcelable {
             return new UserParcelable[size];
         }
     };
+    String test;
+
+    public UserParcelable() {
+    }
+
+    protected UserParcelable(Parcel in) {
+        test = in.readString();
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
 
     @Override
     public int describeContents() {

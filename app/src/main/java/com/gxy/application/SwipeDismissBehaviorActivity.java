@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
 
 /**
  * 简单的滑动删除(SwipeDismissBehavior的应用)

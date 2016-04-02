@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

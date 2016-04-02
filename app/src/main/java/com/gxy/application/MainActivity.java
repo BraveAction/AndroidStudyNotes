@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 import android.content.Intent;
 import android.graphics.Color;

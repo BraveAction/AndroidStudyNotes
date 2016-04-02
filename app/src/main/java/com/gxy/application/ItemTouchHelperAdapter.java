@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 /**
  * RecyclerView item的滑动删除与拖放接口

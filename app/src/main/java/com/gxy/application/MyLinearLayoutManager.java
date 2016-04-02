@@ -1,4 +1,4 @@
-package com.example.win7.myapplication;
+package com.gxy.application;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +12,11 @@ import android.view.ViewGroup;
  */
 public class MyLinearLayoutManager extends LinearLayoutManager {
 
+    private int[] mMeasuredDimension = new int[2];
+
     public MyLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
         super(context, orientation, reverseLayout);
     }
-
-    private int[] mMeasuredDimension = new int[2];
 
     @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state,
