@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by win7 on 2016/4/1
+ * 自定义RecyclerView.LayoutManager实现NestedScrollView嵌套RecyclerView
+ * Created by Gxy on 2016/4/1
  */
 public class MyLinearLayoutManager extends LinearLayoutManager {
 

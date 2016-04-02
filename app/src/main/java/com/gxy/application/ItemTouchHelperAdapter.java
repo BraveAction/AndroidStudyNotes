@@ -1,7 +1,8 @@
 package com.example.win7.myapplication;
 
 /**
- * Created by win7 on 2016/3/31
+ * RecyclerView item的滑动删除与拖放接口
+ * Created by Gxy on 2016/3/31
  */
 public interface ItemTouchHelperAdapter {
     /**

@@ -1,77 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <!-- 保证recyclerView与AppBarLayout的行为 -->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="乒乓球颜色和质量无关，白色和黄色都一样，主要看星级。-->
-    <!--以红双喜为例，有一星到五星五种，一星质量最差，五星质量最好。-->
-    <!--乒乓球的颜色历史：前言-->
-    <!--我们都知道Marterial Design是Google推出的全新UI设计规范，如果对其不太了解的可以看下：Material design非官方中文指导手册 ，或者我的前面几篇Material Design的译文，相比之前Google在Android Holo风格上平平淡淡的表现不同，Material Design现在是被Google所比较重视的。在推出这门全新设计语言后，Android上自家的应用很快就使用Material Design全新设计了，如Play商店，Google Map，Google+，比较新的Inbox等；Web上的视觉体验也是很Material的，最有帮助的当属这个了Material Design的官方介绍（自备梯子）了；IOS方面的Google应用也在慢慢推进中。所以作为一个Android开发者怎么能不紧跟Google的步伐呢，下面就来通过Toolbar和Palette这两个在API21后推出的东西，当然Google已经把它们放到到v7库里了，使用Material Design来设计App当然不仅限于这两个方面了，前面的Material Design的译文已经清楚知道怎么去全面设计。除了Toolbar和Palette这篇文章还会介绍在Toolbar下使用Drawer。-->
-    <!--最早乒乓球都是白色的；-->
-    <!--时任国际乒联徐寅生主席提出了更换为黄球的提议后，得到了广大球迷爱好朋友们的一致好评，无论从提高乒乓球的吸引度，和对乒乓球比赛的电视转播效果来看，都是相当不错；-->
-    <!--2014年4月末举行的东京世乒赛上，中国乒协就向国际乒联递交了有关双色乒乓球的研发提案，即用白色、橙色相间的乒乓球取代传统的单色乒乓球。结果，这一提案得到了国际乒联及众多会员协会的认可，国际乒联还提倡其他协会也进行这方面的研究。-->
-    <!--在实验结果非常顺利的情况下，中国乒协7月15日最终做出了决定，下个月开始的乒超联赛决赛阶段，将使用这种双色乒乓球。那么，27摄氏度的平均气温，在我们这里应该换一下单位制。在物理学中，温度的标准单位不是摄氏度，而是开尔文。摄氏度的来历是我们老百姓在家里烧开水，把水烧开了定义为100摄氏度，把水结冰定义为0摄氏度，这是为了人类生活方便才这样定义。但摄氏度是没有告诉我们宇宙中最冷的温度到底是多少，而开尔文可以告诉我们，宇宙中最低的温度是0开尔文，也就是零下273摄氏度。根据公式：X摄氏度=（X+273）开尔文，将27摄氏度换算成热力学标准单位是300（就是27+273=300）开尔文，所以当天空中共有10个太阳的时候，地球平均气温就是300×1.7728≈532（开尔文），换算回来就是259（532-273=259）摄氏度。也就是说在此时，地球的平均气温并不是270摄氏度，而是259摄氏度。-->
 
-    <!--10个太阳的神功，我们会算了。那么，按照本文讲的科学计算方法，读者应该可以估计出当天空中有3个太阳的时候，地球的平均气温了，大家可以动手算一算，然后与刘慈欣的科幻小说《三体》中的描述对比一下。"-->
-        <!--/>-->
-
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+        <!--android:fillViewport="true"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recyclerView"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:descendantFocusability="blocksDescendants">-->
 
-        <!--</android.support.v7.widget.RecyclerView>-->
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:id="@+id/cardview1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="10dp">-->
 
-        <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            app:cardBackgroundColor="#FFC000"
-            app:cardCornerRadius="2dp"
-            app:contentPadding="10dp">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:padding="15dp">-->
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Info CardView1"-->
+                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="100"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</android.support.v7.widget.CardView>-->
+
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:id="@+id/cardview2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/cardview1"-->
+                <!--android:layout_margin="10dp">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:padding="15dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Info CardView2"-->
+                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="100"/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</android.support.v7.widget.CardView>-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="New Text"/>
-        </android.support.v7.widget.CardView>
+                android:layout_below="@+id/cardview2"
+                android:paddingTop="0dp"
+                />
+                <!--android:clipToPadding="false"-->
 
-        <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            app:cardBackgroundColor="#FFC000"
-            app:cardCornerRadius="2dp"
-            app:contentPadding="10dp">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"/>
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-
-
-</android.support.v4.widget.NestedScrollView>
+        <!--</RelativeLayout>-->
+    </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

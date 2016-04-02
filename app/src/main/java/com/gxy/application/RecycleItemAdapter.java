@@ -14,7 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by win7 on 2016/3/31
+ * 实现了滑动删除和拖放的适配器
+ * Created by Gxy on 2016/3/31
  */
 public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 

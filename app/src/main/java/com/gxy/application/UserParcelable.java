@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * 实现android序列化接口,在Intent中传递
- * Created by Gxy on 2016/3/3.
+ * Created by Gxy on 2016/03/03.
  */
 public class UserParcelable implements Parcelable {
     String test;

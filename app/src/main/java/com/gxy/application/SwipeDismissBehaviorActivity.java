@@ -3,19 +3,22 @@ package com.example.win7.myapplication;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.SwipeDismissBehavior;
-import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * 简单的滑动删除(SwipeDismissBehavior的应用)
+ * Greated by Gxy on 2016/04/01
+ */
 public class SwipeDismissBehaviorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main22);
+        setContentView(R.layout.activity_swipedismissbehavior);
 
 
         final TextView swipeView = (TextView) findViewById(R.id.swip);
@@ -31,11 +34,11 @@ public class SwipeDismissBehaviorActivity extends AppCompatActivity {
                     public void onDragStateChanged(int state) {
                         Log.i("SwipeDismissBehaviorActivity:", "onDragStateChanged");
                         Log.i("SwipeDismissBehaviorActivity:", state + "");
-                        Log.i("swipeView.x:", swipeView.getX()+"");
-                        Log.i("swipeView.width:", swipeView.getWidth()+"");
-                        Log.i("swipeView.measuredWidth:", swipeView.getMeasuredWidth()+"");
+                        Log.i("swipeView.x:", swipeView.getX() + "");
+                        Log.i("swipeView.width:", swipeView.getWidth() + "");
+                        Log.i("swipeView.measuredWidth:", swipeView.getMeasuredWidth() + "");
                         if (swipe.getDragState() == SwipeDismissBehavior.STATE_DRAGGING) {
-                            if(swipeView.getWidth()<swipeView.getMeasuredWidth()/2){
+                            if (swipeView.getWidth() < swipeView.getMeasuredWidth() / 2) {
                                 swipeView.setText("不好");
                             }
                         }

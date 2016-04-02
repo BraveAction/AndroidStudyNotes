@@ -2,7 +2,6 @@ package com.example.win7.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +10,16 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 实现android序列化接口的对象在Intent中的传递
+ * Greated by Gxy on 2016/04/01
+ */
 public class ParcelableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_itemtouchhelper);
         initRecyclerView();
     }
 
