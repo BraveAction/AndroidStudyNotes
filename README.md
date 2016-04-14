@@ -1,7 +1,7 @@
 *学习目录*
 ***
-android Design学习日志
->1:
+> android Design学习日志
+1.
 ***
 **效果图片**
 ***
