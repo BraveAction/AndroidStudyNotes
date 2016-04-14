@@ -31,9 +31,9 @@ public class ParcelableActivity extends AppCompatActivity {
      * 初始
      */
     void initRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL, false));
+        RecyclerView mRcyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRcyclerView.setHasFixedSize(true);
+        mRcyclerView.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL, false));
         final RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this, new MainActivity.ItemOnClickListener() {
             @Override
             public void onClick() {
@@ -62,7 +62,7 @@ public class ParcelableActivity extends AppCompatActivity {
         data.add("19");
 
 
-        recyclerView.setAdapter(recycleItemAdapter);
+        mRcyclerView.setAdapter(recycleItemAdapter);
         recycleItemAdapter.setmData(data);
 //        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(recycleItemAdapter);
         ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
@@ -78,8 +78,8 @@ public class ParcelableActivity extends AppCompatActivity {
                 recycleItemAdapter.onItemDismiss(viewHolder.getAdapterPosition());
             }
         };
-        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
-        mItemTouchHelper.attachToRecyclerView(recyclerView);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(mRcyclerView);
 
     }
 }
