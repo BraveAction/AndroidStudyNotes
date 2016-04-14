@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,13 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
 
     private Activity mContext;
     private List<String> mData;
+    private MainActivity.ItemOnClickListener itemOnClickListener;
 
-    public RecycleItemAdapter(Activity activity) {
+    public RecycleItemAdapter(Activity activity, MainActivity.ItemOnClickListener itemOnClickListener) {
         this.mContext = activity;
+        this.itemOnClickListener = itemOnClickListener;
+        Log.i(getClass().getSimpleName(), (this.itemOnClickListener == null) + "");
+        this.itemOnClickListener.onClick();
     }
 
     @Override
@@ -46,6 +51,10 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
         return mData.size();
     }
 
+    public List getData() {
+        return mData;
+    }
+
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
         Collections.swap(mData, fromPosition, toPosition);
@@ -59,7 +68,7 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
         notifyItemRemoved(position);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder, View.OnClickListener {
         private TextView textView;
         private CardView mIteCardView;
 
@@ -67,6 +76,7 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
             super(itemView);
             mIteCardView = (CardView) itemView;
             textView = (TextView) itemView.findViewById(R.id.textView);
+            mIteCardView.setOnClickListener(this);
         }
 
         @Override
@@ -79,6 +89,17 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
         public void onItemClear() {
 //            mIteCardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorAccent));
             mIteCardView.setCardBackgroundColor(0xFFFFC000);
+        }
+
+        @Override
+        public void onItemDragSelected() {
+            mIteCardView.setCardBackgroundColor(Color.LTGRAY);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            RecycleItemAdapter.this.itemOnClickListener.onClick();
         }
     }
 }

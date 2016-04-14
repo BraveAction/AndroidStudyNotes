@@ -11,6 +11,7 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,11 +80,17 @@ public class MainActivity extends AppCompatActivity {
      * 实现NestedScrollView 嵌套recyclerView
      */
     void initRecyclerView() {
+        final List<String> data = new ArrayList<>();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new MyLinearLayoutManager(this, OrientationHelper.VERTICAL, false));
-        RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this);
-        List<String> data = new ArrayList<>();
+        RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this, new ItemOnClickListener() {
+            @Override
+            public void onClick() {
+                System.out.println(123);
+                Log.i(getClass().getSimpleName(), "456");
+            }
+        });
         data.add("1");
         data.add("2");
         data.add("3");
@@ -116,8 +123,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     void initCollapsingToolbarLayout() {
+
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
-//        collapsingToolbarLayout.setExpandedTitleColor(0xFFC000);
+        collapsingToolbarLayout.setExpandedTitleColor(0xFFC000);
 //        collapsingToolbarLayout.setCollapsedTitleTextColor(0xFFC000);
         collapsingToolbarLayout.setTitle("你好!");
     }
@@ -160,5 +168,9 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == android.app.Activity.RESULT_OK) {
             }
         }
+    }
+
+    interface ItemOnClickListener {
+        void onClick();
     }
 }

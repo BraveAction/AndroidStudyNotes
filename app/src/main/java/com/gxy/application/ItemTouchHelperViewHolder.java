@@ -17,4 +17,9 @@ public interface ItemTouchHelperViewHolder {
      * state should be cleared.
      */
     void onItemClear();
+
+    /**
+     * 当item 移动时的选择颜色
+     */
+    void onItemDragSelected();
 }

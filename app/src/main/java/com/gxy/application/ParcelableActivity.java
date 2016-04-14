@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,6 +22,8 @@ public class ParcelableActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itemtouchhelper);
+        UserParcelable user = getIntent().getParcelableExtra("test");
+        Toast.makeText(ParcelableActivity.this, user.getTest(), Toast.LENGTH_SHORT).show();
         initRecyclerView();
     }
 
@@ -30,7 +34,12 @@ public class ParcelableActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL, false));
-        RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this);
+        final RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this, new MainActivity.ItemOnClickListener() {
+            @Override
+            public void onClick() {
+
+            }
+        });
         List<String> data = new ArrayList<>();
         data.add("1");
         data.add("2");
@@ -55,7 +64,20 @@ public class ParcelableActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(recycleItemAdapter);
         recycleItemAdapter.setmData(data);
-        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(recycleItemAdapter);
+//        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(recycleItemAdapter);
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                recycleItemAdapter.notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+                Collections.swap(recycleItemAdapter.getData(), viewHolder.getAdapterPosition(), target.getAdapterPosition());
+                return true;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                recycleItemAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+            }
+        };
         ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);
 

@@ -27,6 +27,7 @@ public class MyLinearLayoutManager extends LinearLayoutManager {
         final int heightSize = View.MeasureSpec.getSize(heightSpec);
         int width = 0;
         int height = 0;
+
         for (int i = 0; i < getItemCount(); i++) {
             if (getOrientation() == HORIZONTAL) {
                 measureScrapChild(recycler, i,
