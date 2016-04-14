@@ -6,11 +6,6 @@
 1. 1
 2. 2
 3. 3
-
-***
-
 **效果图片**
-
-***
 
 ![image](https://github.com/BraveAction/MaterialDesign_learning/raw/master/app/screenshot1.png)
