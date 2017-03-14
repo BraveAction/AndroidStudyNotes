@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.Toast;
 
@@ -18,10 +19,18 @@ import java.util.List;
  */
 public class ParcelableActivity extends AppCompatActivity {
 
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_itemtouchhelper);
+        mToolbar = (Toolbar) findViewById(R.id.toolBar);
+
+        setSupportActionBar(mToolbar);
+
+        mToolbar.setMinimumHeight(100);
         UserParcelable user = getIntent().getParcelableExtra("test");
         Toast.makeText(ParcelableActivity.this, user.getTest(), Toast.LENGTH_SHORT).show();
         initRecyclerView();
@@ -34,7 +43,7 @@ public class ParcelableActivity extends AppCompatActivity {
         RecyclerView mRcyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRcyclerView.setHasFixedSize(true);
         mRcyclerView.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL, false));
-        final RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this, new MainActivity.ItemOnClickListener() {
+        final RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(mRcyclerView, this, new MainActivity.ItemOnClickListener() {
             @Override
             public void onClick() {
 

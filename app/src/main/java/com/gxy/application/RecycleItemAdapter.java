@@ -22,8 +22,10 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
     private Activity mContext;
     private List<String> mData;
     private MainActivity.ItemOnClickListener itemOnClickListener;
+    private RecyclerView mRecyclerView;
 
-    public RecycleItemAdapter(Activity activity, MainActivity.ItemOnClickListener itemOnClickListener) {
+    public RecycleItemAdapter(RecyclerView recyclerView, Activity activity, MainActivity.ItemOnClickListener itemOnClickListener) {
+        this.mRecyclerView = recyclerView;
         this.mContext = activity;
         this.itemOnClickListener = itemOnClickListener;
         Log.i(getClass().getSimpleName(), (this.itemOnClickListener == null) + "");
@@ -66,6 +68,12 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
     public void onItemDismiss(int position) {
         mData.remove(position);
         notifyItemRemoved(position);
+        this.mRecyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                notifyDataSetChanged();
+            }
+        }, this.mRecyclerView.getItemAnimator().getMoveDuration() + 50);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder, View.OnClickListener {

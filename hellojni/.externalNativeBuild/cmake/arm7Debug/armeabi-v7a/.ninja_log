@@ -1,0 +1,5 @@
+# ninja log v5
+0	137	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	38192f38dd3b6c57
+137	226	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	dd3eb827709a7c5c
+123	2868	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	38192f38dd3b6c57
+2868	4838	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	dd3eb827709a7c5c

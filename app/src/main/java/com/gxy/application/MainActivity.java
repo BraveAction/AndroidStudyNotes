@@ -1,11 +1,15 @@
 package com.gxy.application;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +63,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     void initFAB() {
+        ImageView toolBarImage = (ImageView) findViewById(R.id.toolBarImage);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.yc);
+        Bitmap src = bitmapDrawable.getBitmap();
+        Bitmap dst;
+//将长方形图片裁剪成正方形图片
+        if (src.getWidth() >= src.getHeight()) {
+            dst = Bitmap.createBitmap(src, src.getWidth() / 2 - src.getHeight() / 2, 0, src.getHeight(), src.getHeight()
+            );
+        } else {
+            dst = Bitmap.createBitmap(src, 0, src.getHeight() / 2 - src.getWidth() / 2, src.getWidth(), src.getWidth()
+            );
+        }
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), dst);
+        roundedBitmapDrawable.setCornerRadius(dst.getWidth() / 2);
+        roundedBitmapDrawable.setAntiAlias(true);
+        toolBarImage.setImageDrawable(roundedBitmapDrawable);
+        toolBarImage.invalidate();
+
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +104,17 @@ public class MainActivity extends AppCompatActivity {
      */
     void initRecyclerView() {
         final List<String> data = new ArrayList<>();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new MyLinearLayoutManager(this, OrientationHelper.VERTICAL, false));
-        RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(this, new ItemOnClickListener() {
+
+//        SimpleItemAnimator defaultItemAnimator = (SimpleItemAnimator) recyclerView.getItemAnimator();
+//        defaultItemAnimator.setSupportsChangeAnimations(false);
+//        defaultItemAnimator.setMoveDuration(0);
+
+        final RecycleItemAdapter recycleItemAdapter = new RecycleItemAdapter(recyclerView, this, new ItemOnClickListener() {
             @Override
             public void onClick() {
-                System.out.println(123);
                 Log.i(getClass().getSimpleName(), "456");
             }
         });
@@ -119,6 +146,59 @@ public class MainActivity extends AppCompatActivity {
 
         //滑动时会通知到CollapsingToolbarLayout
         recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.setItemAnimator(new SimpleItemAnimator() {
+//
+//            @Override
+//            public void onRemoveFinished(RecyclerView.ViewHolder item) {
+//                Log.d(TAG, "onRemoveFinished");
+//                recycleItemAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public boolean animateRemove(RecyclerView.ViewHolder holder) {
+//                Log.d(TAG, "animateRemove");
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean animateAdd(RecyclerView.ViewHolder holder) {
+//                Log.d(TAG, "animateAdd");
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean animateMove(RecyclerView.ViewHolder holder, int fromX, int fromY, int toX, int toY) {
+//                Log.d(TAG, "animateMove");
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean animateChange(RecyclerView.ViewHolder oldHolder, RecyclerView.ViewHolder newHolder, int fromLeft, int fromTop, int toLeft, int toTop) {
+//                Log.d(TAG, "animateChange");
+//                return true;
+//            }
+//
+//            @Override
+//            public void runPendingAnimations() {
+//                Log.d(TAG, "runPendingAnimations");
+//            }
+//
+//            @Override
+//            public void endAnimation(RecyclerView.ViewHolder item) {
+//                Log.d(TAG, "endAnimation");
+//            }
+//
+//            @Override
+//            public void endAnimations() {
+//                Log.d(TAG, "endAnimations");
+//            }
+//
+//            @Override
+//            public boolean isRunning() {
+//                Log.d(TAG, "isRunning");
+//                return false;
+//            }
+//        });
     }
 
 
@@ -148,14 +228,15 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.edit) {
-            Intent intent = new Intent(getApplicationContext(), SwipeDismissBehaviorActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), Main22Activity.class);
+//            startActivity(intent);
         } else if (id == R.id.edit1) {
-            UserParcelable user = new UserParcelable();
-            user.setTest("你好");
-            Intent intent = new Intent(getApplicationContext(), ParcelableActivity.class);
-            intent.putExtra("test", user);
-            startActivityForResult(intent, 1);
+//            UserParcelable user = new UserParcelable();
+//            user.setTest("你好");
+//            Intent intent = new Intent(getApplicationContext(), ParcelableActivity.class);
+//            intent.putExtra("test", user);
+//            startActivityForResult(intent, 1);
+            startActivity(new Intent(getApplicationContext(), Main3Activity.class));
         }
 
         return super.onOptionsItemSelected(item);

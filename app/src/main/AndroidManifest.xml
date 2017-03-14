@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.gxy.application"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.gxy.application"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 读取硬盘信息 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -28,11 +30,16 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
-
         <activity
             android:name=".SwipeDismissBehaviorActivity"
             android:label="@string/title_activity_main22"
             android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".Main2Activity">
+        </activity>
+        <activity android:name=".Main22Activity">
+        </activity>
+        <activity android:name=".Main3Activity">
         </activity>
     </application>
 
