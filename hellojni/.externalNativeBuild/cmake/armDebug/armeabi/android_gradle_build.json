@@ -1,34 +1,35 @@
+
 {
-  "buildFiles": [
-    "E:/temp/MyApplication/hellojni/src/main/cpp/CMakeLists.txt"
-  ],
-  "cFileExtensions": [
-    "c"
-  ],
-  "cleanCommands": [
-    "D:\\Android_SDK\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\temp\\MyApplication\\hellojni\\.externalNativeBuild\\cmake\\armDebug\\armeabi --target clean"
-  ],
-  "libraries": {
-    "hello-jni-Debug-armeabi": {
-      "abi": "armeabi",
-      "artifactName": "hello-jni",
-      "buildCommand": "D:\\Android_SDK\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\temp\\MyApplication\\hellojni\\.externalNativeBuild\\cmake\\armDebug\\armeabi --target hello-jni",
-      "buildType": "debug",
-      "files": [
-        {
-          "flags": "  -target armv5te-none-linux-androideabi -gcc-toolchain D:/Android_SDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android_SDK/ndk-bundle/platforms/android-21/arch-arm -Dhello_jni_EXPORTS  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info  -fPIC      -c ",
-          "src": "E:/temp/MyApplication/hellojni/src/main/cpp/hello-jni.c",
-          "workingDirectory": "E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/armDebug/armeabi"
-        }
-      ],
-      "output": "E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm/debug/obj/armeabi/libhello-jni.so",
-      "toolchain": "1235353185"
-    }
-  },
-  "toolchains": {
-    "1235353185": {
-      "cCompilerExecutable": "D:/Android_SDK/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-      "cppCompilerExecutable": "D:/Android_SDK/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
-    }
-  }
+	"buildFiles": [
+		"E:/temp/MyApplication/hellojni/src/main/cpp/CMakeLists.txt"
+	],
+	"cFileExtensions": [
+		"c"
+	],
+	"cleanCommands": [
+		"D:\\Android_SDK\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\temp\\MyApplication\\hellojni\\.externalNativeBuild\\cmake\\armDebug\\armeabi --target clean"
+	],
+	"libraries": {
+		"hello-jni-Debug-armeabi": {
+			"abi": "armeabi",
+			"artifactName": "hello-jni",
+			"buildCommand": "D:\\Android_SDK\\cmake\\3.6.3155560\\bin\\cmake.exe --build E:\\temp\\MyApplication\\hellojni\\.externalNativeBuild\\cmake\\armDebug\\armeabi --target hello-jni",
+			"buildType": "debug",
+			"files": [
+				{
+					"flags": "  -target armv5te-none-linux-androideabi -gcc-toolchain D:/Android_SDK/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=D:/Android_SDK/ndk-bundle/platforms/android-14/arch-arm -Dhello_jni_EXPORTS  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv5te -mtune=xscale -msoft-float -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src": "E:/temp/MyApplication/hellojni/src/main/cpp/hello-jni.c",
+					"workingDirectory": "E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/armDebug/armeabi"
+				}
+			],
+			"output": "E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm/debug/obj/armeabi/libhello-jni.so",
+			"toolchain": "1235353185"
+		}
+	},
+	"toolchains": {
+		"1235353185": {
+			"cCompilerExecutable": "D:/Android_SDK/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable": "D:/Android_SDK/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
 }

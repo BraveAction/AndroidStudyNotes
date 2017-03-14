@@ -3,6 +3,7 @@ package com.gxy.application
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import org.jetbrains.anko.*
 
 class Main2Activity : AppCompatActivity() {
 
