@@ -5,6 +5,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.gxy.application.itemTouch.ItemTouchHelperAdapter;
+import com.gxy.application.itemTouch.ItemTouchHelperViewHolder;
+
 /**
  * 实现RecyclerView-item滑动删除的回调类
  * Created by Gxy on 2016/3/31

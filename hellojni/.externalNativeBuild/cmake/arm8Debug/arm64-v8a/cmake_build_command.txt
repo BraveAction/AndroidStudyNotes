@@ -9,7 +9,7 @@ arguments :
 -DCMAKE_BUILD_TYPE=Debug
 -DCMAKE_MAKE_PROGRAM=D:\Android_SDK\cmake\3.6.3155560\bin\ninja.exe
 -DCMAKE_TOOLCHAIN_FILE=D:\Android_SDK\ndk-bundle\build\cmake\android.toolchain.cmake
--DANDROID_PLATFORM=android-21
+-DANDROID_NATIVE_API_LEVEL=21
 -DANDROID_TOOLCHAIN=clang
 jvmArgs : 
 

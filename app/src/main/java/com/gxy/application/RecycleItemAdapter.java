@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gxy.application.itemTouch.ItemTouchHelperAdapter;
+import com.gxy.application.itemTouch.ItemTouchHelperViewHolder;
+
 import java.util.Collections;
 import java.util.List;
 

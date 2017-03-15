@@ -1,9 +1,0 @@
-# ninja log v5
-1	650	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	f81c97cdb8a78706
-650	766	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	5c358bb712beb6
-53	305	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	f81c97cdb8a78706
-305	407	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	5c358bb712beb6
-1	2050	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	f81c97cdb8a78706
-2050	2151	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	5c358bb712beb6
-0	120	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	f81c97cdb8a78706
-120	813	0	E:/temp/MyApplication/hellojni/build/intermediates/cmake/arm7/debug/obj/armeabi-v7a/libhello-jni.so	5c358bb712beb6

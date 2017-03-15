@@ -1,0 +1,5 @@
+# ninja log v5
+0	172	0	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	57a4d8f540a888c5
+173	357	0	E:/temp/MyApplication/jniCallback/build/intermediates/cmake/debug/obj/x86/libhello-jnicallback.so	b5749198f88a8851
+215	858	0	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	57a4d8f540a888c5
+858	1467	0	E:/temp/MyApplication/jniCallback/build/intermediates/cmake/debug/obj/x86/libhello-jnicallback.so	b5749198f88a8851

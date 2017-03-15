@@ -18,10 +18,10 @@
 ANDROID_ABI:UNINITIALIZED=arm64-v8a
 
 //No help, variable specified on the command line.
-ANDROID_NDK:UNINITIALIZED=D:\Android_SDK\ndk-bundle
+ANDROID_NATIVE_API_LEVEL:UNINITIALIZED=21
 
 //No help, variable specified on the command line.
-ANDROID_PLATFORM:UNINITIALIZED=android-21
+ANDROID_NDK:UNINITIALIZED=D:\Android_SDK\ndk-bundle
 
 //No help, variable specified on the command line.
 ANDROID_TOOLCHAIN:UNINITIALIZED=clang

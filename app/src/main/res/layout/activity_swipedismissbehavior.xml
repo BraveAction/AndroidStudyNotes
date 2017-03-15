@@ -12,12 +12,20 @@
         android:layout_height="match_parent"
         >
 
+        <ImageView
+            android:id="@+id/vectorAnimated"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="top"
+            android:src="@drawable/animated_square"
+            />
+
         <TextView
             android:id="@+id/swip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="#505150"
-            android:gravity="center"
             android:text="别删我"
             android:textSize="20dip"
             />

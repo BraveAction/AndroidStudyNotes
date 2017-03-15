@@ -8,7 +8,9 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.SwipeDismissBehavior;
@@ -115,5 +117,19 @@ public class SwipeDismissBehaviorActivity extends AppCompatActivity {
         Bitmap bmp = ((BitmapDrawable) getResources().getDrawable(R.drawable.img)).getBitmap();
         image.setImageBitmap(createReflectedImage(bmp));
 
+        startVectorAnimated();
+    }
+
+    private void startVectorAnimated() {
+        ImageView imageView = (ImageView) findViewById(R.id.vectorAnimated);
+        final Drawable drawable = imageView.getDrawable();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawable instanceof Animatable) {
+                    ((Animatable) drawable).start();
+                }
+            }
+        });
     }
 }

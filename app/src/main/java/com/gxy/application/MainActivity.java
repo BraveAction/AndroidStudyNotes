@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.gxy.application.fragment.LazyFragmentsActivity;
+import com.gxy.application.parclelable.ParcelableActivity;
+import com.gxy.application.parclelable.UserParcelable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         final List<String> data = new ArrayList<>();
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new MyLinearLayoutManager(this, OrientationHelper.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, OrientationHelper.VERTICAL, false));
 
 //        SimpleItemAnimator defaultItemAnimator = (SimpleItemAnimator) recyclerView.getItemAnimator();
 //        defaultItemAnimator.setSupportsChangeAnimations(false);
@@ -225,19 +230,24 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.edit) {
-//            Intent intent = new Intent(getApplicationContext(), Main22Activity.class);
-//            startActivity(intent);
-        } else if (id == R.id.edit1) {
-//            UserParcelable user = new UserParcelable();
-//            user.setTest("你好");
-//            Intent intent = new Intent(getApplicationContext(), ParcelableActivity.class);
-//            intent.putExtra("test", user);
-//            startActivityForResult(intent, 1);
-            startActivity(new Intent(getApplicationContext(), Main3Activity.class));
+        if (id == R.id.s1) {
+            Intent intent = new Intent(getApplicationContext(), AnkoActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.kotlin) {
+            Intent intent = new Intent(getApplicationContext(), KotlinActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.fragments) {
+            UserParcelable user = new UserParcelable();
+            user.setTest("你好");
+            Intent intent = new Intent(getApplicationContext(), ParcelableActivity.class);
+            intent.putExtra("test", user);
+            startActivityForResult(intent, 1);
+        } else if (id == R.id.parcleableItemAction) {
+            startActivity(new Intent(getApplicationContext(), LazyFragmentsActivity.class));
+        } else if (id == R.id.swip) {
+            startActivity(new Intent(getApplicationContext(), SwipeDismissBehaviorActivity.class));
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -251,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    interface ItemOnClickListener {
+    public interface ItemOnClickListener {
         void onClick();
     }
 }
