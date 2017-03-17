@@ -21,7 +21,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     *loadLibrary在扫描java库路径时, 一旦发现同名的库,立即加载共享库,因为java库路径的第一组目录是android系统目录
+     * 为了避免与系统库命名冲突,强烈建议android开发人员为每个共享库选择唯一的名字
+     */
     static {
         System.loadLibrary("hello-jnicallback");
     }

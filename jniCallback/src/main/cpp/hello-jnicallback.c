@@ -37,7 +37,7 @@ typedef struct tick_context {
     jobject jniHelperObj;
     jclass mainActivityClz;
     jobject mainActivityObj;
-    pthread_mutex_t lock;
+    pthread_mutex_t lock;       //多个线程保持同步。这时可以用互斥锁来完成任务
     int done;
 } TickContext;
 TickContext g_ctx;
@@ -114,9 +114,11 @@ void queryRuntimeInfo(JNIEnv *env, jobject instance) {
         return;
     }
     LOGI("Android Version - %s", version);
+    //GetStringUTFChars与ReleaseStringUTFChars成对出现
     (*env)->ReleaseStringUTFChars(env, buildVersion, version);
 
     // we are called from JNI_OnLoad, so got to release LocalRef to avoid leaking
+    //当不再使用时,需要正确地删除全局引用,否则会发生内存泄露
     (*env)->DeleteLocalRef(env, buildVersion);
 
     // Query available memory size from a non-static public function
@@ -143,6 +145,9 @@ void queryRuntimeInfo(JNIEnv *env, jobject instance) {
  *     All resources allocated here are never released by application
  *     we rely on system to free all global refs when it goes away;
  *     the pairing function JNI_OnUnload() never gets called at all.
+ * 当共享库开始加载时虚拟机自动调用此函数,
+ * @param *vm java虚拟机接口指针
+ * @param *reserved
  */
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     JNIEnv *env;
@@ -153,14 +158,18 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
         return JNI_ERR; // JNI version not supported.
     }
 
+    //找到java辅助工具类
     jclass clz = (*env)->FindClass(env,
                                    "com/example/hellojnicallback/JniHandler");
+    //创建jniHelperClz全局引用
     g_ctx.jniHelperClz = (*env)->NewGlobalRef(env, clz);
-
+    //初始化创建jniHelper类
     jmethodID jniHelperCtor = (*env)->GetMethodID(env, g_ctx.jniHelperClz,
                                                   "<init>", "()V");
+    //创建jniHelper对象
     jobject handler = (*env)->NewObject(env, g_ctx.jniHelperClz,
                                         jniHelperCtor);
+    //为jniHelper对象创建全局引用
     g_ctx.jniHelperObj = (*env)->NewGlobalRef(env, handler);
     queryRuntimeInfo(env, g_ctx.jniHelperObj);
 
@@ -192,6 +201,7 @@ void *UpdateTicks(void *context) {
     JNIEnv *env;
     jint res = (*javaVM)->GetEnv(javaVM, (void **) &env, JNI_VERSION_1_6);
     if (res != JNI_OK) {
+        //将当前线程附加到java虚拟机上,并且获得JNIEnv接口指针
         res = (*javaVM)->AttachCurrentThread(javaVM, &env, NULL);
         if (JNI_OK != res) {
             LOGE("Failed to AttachCurrentThread, ErrorCode = %d", res);
@@ -234,8 +244,8 @@ void *UpdateTicks(void *context) {
         timersub(&curTime, &beginTime, &usedTime);
         timersub(&kOneSecond, &usedTime, &leftTime);
         struct timespec sleepTime;
-        sleepTime.tv_sec = leftTime.tv_sec;
-        sleepTime.tv_nsec = leftTime.tv_usec * 1000;
+        sleepTime.tv_sec = leftTime.tv_sec;     //秒
+        sleepTime.tv_nsec = leftTime.tv_usec * 1000;        //纳秒
 
         if (sleepTime.tv_sec <= 1) {
             nanosleep(&sleepTime, NULL);
@@ -247,6 +257,7 @@ void *UpdateTicks(void *context) {
 
     sendJavaMsg(env, pctx->jniHelperObj, statusId,
                 "TickerThread status: ticking stopped");
+    //从java虚拟机中分离当前线程
     (*javaVM)->DetachCurrentThread(javaVM);
     return context;
 }
@@ -262,13 +273,36 @@ Java_com_example_hellojnicallback_MainActivity_startTicks(JNIEnv *env, jobject i
     pthread_attr_init(&threadAttr_);
     pthread_attr_setdetachstate(&threadAttr_, PTHREAD_CREATE_DETACHED);
 
+    //创建互斥锁,
+
     pthread_mutex_init(&g_ctx.lock, NULL);
 
     jclass clz = (*env)->GetObjectClass(env, instance);
     g_ctx.mainActivityClz = (*env)->NewGlobalRef(env, clz);
     g_ctx.mainActivityObj = (*env)->NewGlobalRef(env, instance);
 
+    /**
+     * 通过pthread_create函数创建POSIX线程,成功时函数返回0,否则返回一个错误码
+     * @param threadInfo_  &threadInfo_指向pthread_t类型变更的指针,函数用户该指针返回新线程的句柄
+     * @param pthread_attr_t  &threadAttr_结构的指针式存在的新线程属性,可能通过该属性指定新线程
+     *                       的栈基址,栈大小,守护大小,调度策略和调度优先级等,如果使用默认值
+     *                       取值可能为null
+     * @param void* UpdateTicks 指向线程启动程序的函数指针,启动程序将线程参数看成void指针,返回void指针类型结果
+     *             当线程以空指针的形式执行时,参数都需要被传递给启动程序,如果不需要传递参数,它可以为null;
+     *             中间启动程序将POSIX线程正确地附着在java虚拟机上,以获得一个有效的JNIEnv接口指针,
+     * @param void* &g_ctx 启动程序的参数
+     */
     int result = pthread_create(&threadInfo_, &threadAttr_, UpdateTicks, &g_ctx);
+
+    //创建线程失败
+    if (result != 0) {
+        //获取异常类
+        jclass exceptionClz = (*env)->FindClass(env, "java/lang/RuntimeException");
+        //抛出异常
+        (*env)->ThrowNew(env, exceptionClz, "Unable to create thread");
+    } else {
+        LOGI("成功创建线程");
+    }
     assert(result == 0);
     (void) result;
 }
@@ -286,8 +320,10 @@ Java_com_example_hellojnicallback_MainActivity_StopTicks(JNIEnv *env, jobject in
 
     // waiting for ticking thread to flip the done flag
     struct timespec sleepTime;
+    //用于内存空间初始化
     memset(&sleepTime, 0, sizeof(sleepTime));
     sleepTime.tv_nsec = 100000000;
+
     while (g_ctx.done) {
         nanosleep(&sleepTime, NULL);
     }
