@@ -1,3 +1,0 @@
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/arm7Debug/armeabi-v7a/CMakeFiles/hello-jni.dir
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/arm7Debug/armeabi-v7a/CMakeFiles/edit_cache.dir
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/arm7Debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir

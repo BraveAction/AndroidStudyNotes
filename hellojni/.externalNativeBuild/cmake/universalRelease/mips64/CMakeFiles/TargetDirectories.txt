@@ -1,3 +1,0 @@
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/universalRelease/mips64/CMakeFiles/hello-jni.dir
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/universalRelease/mips64/CMakeFiles/edit_cache.dir
-E:/temp/MyApplication/hellojni/.externalNativeBuild/cmake/universalRelease/mips64/CMakeFiles/rebuild_cache.dir

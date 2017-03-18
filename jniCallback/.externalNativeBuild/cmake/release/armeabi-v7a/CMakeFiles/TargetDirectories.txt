@@ -1,3 +1,0 @@
-E:/temp/MyApplication/jniCallback/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/hello-jnicallback.dir
-E:/temp/MyApplication/jniCallback/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
-E:/temp/MyApplication/jniCallback/.externalNativeBuild/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
