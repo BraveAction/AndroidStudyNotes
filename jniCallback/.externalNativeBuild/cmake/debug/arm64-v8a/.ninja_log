@@ -29,3 +29,5 @@
 113	224	0	E:/temp/MyApplication/jniCallback/build/intermediates/cmake/debug/obj/arm64-v8a/libhello-jnicallback.so	1bfb4e17a5f8dd1e
 1	120	0	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	94cd866a23273782
 120	226	0	E:/temp/MyApplication/jniCallback/build/intermediates/cmake/debug/obj/arm64-v8a/libhello-jnicallback.so	1bfb4e17a5f8dd1e
+79	218	0	CMakeFiles/hello-jnicallback.dir/hello-jnicallback.c.o	94cd866a23273782
+218	363	0	E:/temp/MyApplication/jniCallback/build/intermediates/cmake/debug/obj/arm64-v8a/libhello-jnicallback.so	1bfb4e17a5f8dd1e
