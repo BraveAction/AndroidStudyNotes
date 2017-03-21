@@ -1,2 +1,3 @@
-include ':app', ':TestJni',
-        ':hellojni', ':jniCallback'
+include ':app',
+        ':hellojni',
+        ':jniCallback', ':helloLibs'
