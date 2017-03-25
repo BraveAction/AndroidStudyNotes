@@ -27,7 +27,7 @@ public class HelloJni extends AppCompatActivity {
      * installation time by the package manager.
      */
     static {
-        System.loadLibrary("hello-jni");
+        System.loadLibrary("hello");
     }
 
     @Override
