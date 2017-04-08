@@ -78,7 +78,7 @@ android {
     }
     //解决编译器的内存设置不足问题
     dexOptions {
-//        incremental true
+        incremental true
         javaMaxHeapSize "4g"
     }
 
